@@ -1,8 +1,109 @@
+<!DOCTYPE html>
 <html>
-<head>
 
+<head>
+  <title>Троицкая башня Москвоского Кремля</title>
+  <link rel="stylesheet" href="main.css">
+  </link>
+  <script src="//unpkg.com/force-graph"></script>
+  <!--<script src="//unpkg.com/3d-force-graph"></script>-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.9.4/cytoscape.min.js"></script>
 </head>
+
 <body>
-    123
+
+    <div id="impress">
+      
+      <div class="step slide" data-x="0" data-y="0">
+        <div id="step1-top">
+          <h1>Комплекс <q>Троицкая башня</q></h1>
+          <h2>Московского Кремля</h2>
+          <p>Единое звено обороны с Кутафьей башней и Троицким мостом</p>
+        </div>
+        <div id="step1-bottom">
+        </div>
+      </div>
+
+      <div class="step slide" data-x="1000" data-y="0">
+        <div id="step1-top">
+          <h1>Слайд №2</h1>
+        </div>
+      </div>
+
+    </div>
+
+  <!--<script>
+    fetch('graph1.json').then(res => res.json()).then(data => {
+      const Graph = ForceGraph()
+        (document.getElementById('graph-2d'))
+        .graphData(data)
+        .nodeId('id')
+        .nodeAutoColorBy('group')
+        .dagMode('td')
+        .dagLevelDistance(100)
+        .backgroundColor('#101020')
+        .width(600)
+        .height(600)
+    });
+  </script>-->
+
+  <script>
+    var cy = cytoscape({
+      container: document.getElementById('step1-bottom'),
+      elements: [
+        {
+          data: { id: 'Комплекс "Троицкая башня"' }
+        },
+        {
+          data: { id: 'Троицкая башня' }
+        },
+        {
+          data: { id: 'Троицкий мост' }
+        },
+        {
+          data: { id: 'Кутафья башня' }
+        },
+        {
+          data: { source: 'Комплекс "Троицкая башня"', target: 'Троицкая башня', name: 'является частью' }
+        },
+        {
+          data: { source: 'Комплекс "Троицкая башня"', target: 'Троицкий мост', name: 'является частью' }
+        },
+        {
+          data: { source: 'Комплекс "Троицкая башня"', target: 'Кутафья башня', name: 'является частью' }
+        }
+      ],
+      style: [ 
+        {
+          selector: 'node',
+          style: {
+            'background-color': '#666',
+            'label': 'data(id)'
+          }
+        },
+        {
+          selector: 'edge',
+          style: {
+            'width': 3,
+            'line-color': '#ccc',
+            'curve-style': 'bezier',
+            'target-arrow-color': '#ccc',
+            'target-arrow-shape': 'triangle',
+            'arrow-scale': 5,
+            'label': 'data(name)'
+          }
+        }
+      ],
+      layout: {
+        name: 'grid',
+        rows: 2
+      }
+    });
+  </script>
+
+  <script src="impress.js"></script>
+  <script>impress().init();</script>
+
 </body>
+
 </html>
